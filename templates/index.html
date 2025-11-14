@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}AI Skintone Detector{% endblock %}
+
+{% block content %}
+<div class="card uploader-card">
+    <h1 class="title">
+        <i class="fa-solid fa-lipstick icon-pink"></i>
+        AI Skintone Detector
+        <i class="fa-solid fa-paintbrush icon-pink"></i>
+    </h1>
+    
+    {% if error %}
+        <p class="error-message">{{ error }}</p>
+    {% endif %}
+
+    <form method="post" enctype="multipart/form-data" class="upload-form">
+        <div class="file-input-wrapper">
+            <input type="file" name="file" id="file-upload" accept="image/*" required onchange="updateFileName(this)">
+            <label for="file-upload" class="file-label">
+                Choose File
+            </label>
+            <span id="file-name" class="file-name-display">no file selected</span>
+        </div>
+        <button type="submit" class="btn-upload">Upload & Detect</button>
+    </form>
+</div>
+
+<script>
+    function updateFileName(input) {
+        const fileNameDisplay = document.getElementById('file-name');
+        if (input.files.length > 0) {
+            fileNameDisplay.textContent = input.files[0].name;
+        } else {
+            fileNameDisplay.textContent = 'no file selected';
+        }
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block title %}Hasil Deteksi Skintone{% endblock %}
+
+{% block content %}
+<div class="card result-card">
+    <h2 class="title">
+        <i class="fa-solid fa-palette icon-palette"></i>
+        Hasil Deteksi Skintone
+    </h2>
+    
+    {% if skintone and recommendations %}
+    <div class="result-content">
+        <div class="image-container">
+            <img src="{{ url_for('static', filename='uploads/' + image_file) }}" alt="Foto Pengguna" class="result-image">
+        </div>
+        <div class="recommendations">
+            <div class="rec-item">
+                <div class="rec-icon-bg">
+                    <i class="fa-solid fa-fill-drip"></i>
+                </div>
+                <div class="rec-text">
+                    <p class="rec-title">Foundation</p>
+                    <p class="rec-color">{{ recommendations.foundation }}</p>
+                </div>
+            </div>
+             <div class="rec-item">
+                <div class="rec-icon-bg">
+                    <i class="fa-solid fa-lipstick"></i>
+                </div>
+                <div class="rec-text">
+                    <p class="rec-title">Lipstick</p>
+                    <p class="rec-color">{{ recommendations.lipstick }}</p>
+                </div>
+            </div>
+             <div class="rec-item">
+                <div class="rec-icon-bg">
+                    <i class="fa-solid fa-eye"></i>
+                </div>
+                <div class="rec-text">
+                    <p class="rec-title">Eyeshadow</p>
+                    <p class="rec-color">{{ recommendations.eyeshadow }}</p>
+                </div>
+            </div>
+             <div class="rec-item">
+                <div class="rec-icon-bg">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+                <div class="rec-text">
+                    <p class="rec-title">Blush</p>
+                    <p class="rec-color">{{ recommendations.blush }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+     <div class="detected-skintone">
+        Detected Skintone: <strong>{{ skintone }}</strong>
+    </div>
+    {% else %}
+    <p>Terjadi kesalahan saat memproses gambar Anda.</p>
+    {% endif %}
+
+    <a href="{{ url_for('index') }}" class="btn-back">Coba Lagi</a>
+</div>
+{% endblock %}

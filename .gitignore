@@ -1,0 +1,23 @@
+# Lingkungan Virtual Python
+/mediapipe_env/
+.venv/
+venv/
+*.env
+
+# File Kunci Rahasia (SANGAT PENTING)
+*.json
+*.secret
+
+# File Model dan Data Besar
+*.pkl
+*.csv
+/uploads/
+/raw_images/
+
+# Cache Python
+__pycache__/
+*.pyc
+
+# File OS (jika kamu pakai Mac atau Windows)
+.DS_Store
+Thumbs.db
